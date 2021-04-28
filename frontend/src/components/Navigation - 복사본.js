@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
-import { ProSidebar, SidebarHeader, SidebarContent, SidebarFooter, Menu, MenuItem } from 'react-pro-sidebar';
+import { ProSidebar, SidebarHeader, SidebarContent, SidebarFooter, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 
 import HomeIcon from "./icon/HomeIcon";
@@ -40,6 +40,7 @@ const Navigation = () => {
   }, []);
 
   return (
+    
     <Container>
       {isLoading ? <></> : 
       <ProSidebar
@@ -55,31 +56,35 @@ const Navigation = () => {
         <SidebarContent>
           <Menu iconShape="circle">
             <MenuItem icon={<HomeIcon />}>
-              <Link to="/admin">Home</Link>
+              <Link to="/">Home</Link>
             </MenuItem>
 
-            <MenuItem icon={<MovieIcon />}>
-              <Link to="/admin">Movie</Link>
-            </MenuItem>
+            <SubMenu title="Movie" icon={<MovieIcon />}>
+              <MenuItem><Link to="/features">Component 1</Link></MenuItem>
+              <MenuItem><Link to="/pricing">Component 2</Link></MenuItem>
+            </SubMenu>
 
-            <MenuItem icon={<ShowIcon />}>
-              <Link to="/admin">Show</Link>
-            </MenuItem>
+            <SubMenu title="Show" icon={<ShowIcon />}>
+              <MenuItem><Link to="/features">Component 1</Link></MenuItem>
+              <MenuItem><Link to="/pricing">Component 2</Link></MenuItem>
+            </SubMenu>
 
-            <MenuItem icon={<SeatIcon />}>
-              <Link to="/admin">Seat</Link>
-            </MenuItem>
+            <SubMenu title="Seat" icon={<SeatIcon />}>
+              <MenuItem><Link to="/features">Component 1</Link></MenuItem>
+              <MenuItem><Link to="/pricing">Component 2</Link></MenuItem>
+            </SubMenu>
 
-            <MenuItem icon={<TicketIcon />}>
-              <Link to="/admin">Ticket</Link>
-            </MenuItem>
+            <SubMenu title="Ticket" icon={<TicketIcon />}>
+              <MenuItem><Link to="/features">Component 1</Link></MenuItem>
+              <MenuItem><Link to="/pricing">Component 2</Link></MenuItem>
+            </SubMenu>
 
-            <MenuItem icon={<CustomerIcon />}>
-              <Link to="/admin">Customer</Link>
-            </MenuItem>
+            <SubMenu title="Customer" icon={<CustomerIcon />}>
+              <MenuItem>Component 1</MenuItem>
+
+            </SubMenu>
           </Menu>
         </SidebarContent>
-
         <SidebarFooter
           style={{"textAlign": "center"}}
         >
