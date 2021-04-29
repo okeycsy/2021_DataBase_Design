@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
+import { useEffectOnce } from "react-use";
+
 import { ProSidebar, SidebarHeader, SidebarContent, SidebarFooter, Menu, MenuItem } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 
@@ -28,15 +30,15 @@ const Navigation = () => {
     }
   }
 
+  useEffectOnce(() => {
+    handleResize();
+    setIsLoding(false);
+  })
   useEffect(() => {
-    handleResize(); //
     window.addEventListener('resize', handleResize);
-    /*
     return () => { // cleanup 
       window.removeEventListener('resize', handleResize);
     }
-    */
-    setIsLoding(false)
   }, []);
 
   return (

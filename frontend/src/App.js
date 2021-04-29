@@ -1,8 +1,20 @@
 import { BrowserRouter, Route } from 'react-router-dom';
+
+import styled from 'styled-components';
+
+
+
 import Navigation from "./components/Navigation";
 
+import SignInForm from "./components/SignInForm";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
 const Home = () => {
-  return <p>HOME</p>
+  return <SignInForm />
 }
 
 const Features = () => {
@@ -13,14 +25,20 @@ const Pricing = () => {
   return <p>Pricing</p>
 }
 
+
+
 const App = () => {
   return (
-    <BrowserRouter>
-      <Navigation />
-      <Route path="/" exact={true} component={Home} />
-      <Route path="/features" exact={true} component={Features} />
-      <Route path="/pricing" exact={true} component={Pricing} />
-    </BrowserRouter>
+
+      <Container>
+        <BrowserRouter>
+            <Navigation />
+            <Route path="/" exact={true} component={Home} />
+            <Route path="/features" exact={true} component={Features} />
+            <Route path="/pricing" exact={true} component={Pricing} />
+        </BrowserRouter>
+      </Container>
+
   )
 }
 
