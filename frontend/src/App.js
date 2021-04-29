@@ -5,8 +5,7 @@ import styled from 'styled-components';
 
 
 import Navigation from "./components/Navigation";
-
-import SignInForm from "./components/SignInForm";
+import SignIn from "./routes/SignIn";
 
 const Container = styled.div`
   display: flex;
@@ -14,18 +13,8 @@ const Container = styled.div`
 `
 
 const Home = () => {
-  return <SignInForm />
+  return <p>Home</p>
 }
-
-const Features = () => {
-  return <p>Features</p>
-}
-
-const Pricing = () => {
-  return <p>Pricing</p>
-}
-
-
 
 const App = () => {
   return (
@@ -34,8 +23,7 @@ const App = () => {
         <BrowserRouter>
             <Navigation />
             <Route path="/" exact={true} component={Home} />
-            <Route path="/features" exact={true} component={Features} />
-            <Route path="/pricing" exact={true} component={Pricing} />
+            <Route path="/signin" exact={true} component={SignIn} />
         </BrowserRouter>
       </Container>
 
