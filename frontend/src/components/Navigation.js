@@ -15,7 +15,10 @@ import CustomerIcon from "./icon/CustomerIcon";
 import TicketIcon from "./icon/TicketIcon";
 
 const Container = styled.div`
-  height: 100vh
+  height: 100vh;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 `
 
 const Navigation = () => {
@@ -23,7 +26,7 @@ const Navigation = () => {
   const [collapsed, setCollapsed] = useState(false)
 
   const handleResize = () => {
-    if(window.innerWidth <= 958) {
+    if(window.innerWidth <= 992 || window.innerHeight <= 439) {
       setCollapsed(true)
     } else {
       setCollapsed(false)

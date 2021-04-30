@@ -8,12 +8,13 @@ const FigureStyle = {
   display: "table",
   padding: "7px",
   borderRadius: "5px",
-  position: "relative"
+  position: "relative",
 }
 
 const FigureImageStyle = {
   borderRadius: "5px",
-  zIndex: "1"
+  zIndex: "1",
+  height: "23vh"
 }
 
 const FigureTitleStyle = {
@@ -49,7 +50,7 @@ const Rate = styled.span`
   white-space: nowrap;
 `
 
-const Movie = () => {
+const MovieCard = () => {
   const RateColor = "#ED4C6B"
   // #5BC77E #4DD6FF #FFC134 #ED4C6B
   return (
@@ -59,7 +60,6 @@ const Movie = () => {
       <Figure.Image
         src='https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202104/17134_103_1.jpg'
         alt="더 스파이"
-        width={181}
         style={FigureImageStyle}
       />
       <Figure.Caption style={FigureTitleStyle}>더 스파이</Figure.Caption>
@@ -69,4 +69,4 @@ const Movie = () => {
   )
 };
 
-export default Movie;
+export default MovieCard;
