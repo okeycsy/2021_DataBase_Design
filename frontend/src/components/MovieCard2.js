@@ -1,4 +1,4 @@
-import { Figure } from "react-bootstrap";
+import { Figure, Container, Row } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -8,6 +8,9 @@ const FigureStyle = {
   padding: "7px",
   borderRadius: "5px",
   position: "relative",
+  display: "flex",
+  flexDirection: "row",
+  width: "70vw",
 }
 
 const FigureImageStyle = {
@@ -17,11 +20,11 @@ const FigureImageStyle = {
 }
 
 const FigureTitleStyle = {
-  textAlign: "center",
+  textAlign: "left",
 }
 
 const FigureDiscriptionStyle = {
-  textAlign: "center",
+  textAlign: "left",
   fontSize: "0.7rem",
 }
 
@@ -29,7 +32,7 @@ const Rate = styled.span`
   z-index: 2;
   position: absolute;
   top: 14px;
-  right: 12px;
+  left: 12px;
 
   background-color: ${props => props.color};
 
@@ -61,8 +64,10 @@ const MovieCard = () => {
         alt="더 스파이"
         style={FigureImageStyle}
       />
+      <Container>
       <Figure.Caption style={FigureTitleStyle}>더 스파이</Figure.Caption>
-      <Figure.Caption style={FigureDiscriptionStyle}>예매율 99.8% | ☆ 4.5</Figure.Caption>
+      <Figure.Caption style={FigureTitleStyle}>더 스파이</Figure.Caption>
+      </Container>
     </Figure>
     </Link>
   )

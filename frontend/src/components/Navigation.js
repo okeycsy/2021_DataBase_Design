@@ -26,7 +26,7 @@ const Navigation = () => {
   const [collapsed, setCollapsed] = useState(false)
 
   const handleResize = () => {
-    if(window.innerWidth <= 992 || window.innerHeight <= 439) {
+    if(window.innerWidth <= 1366 || window.innerHeight <= 439) {
       setCollapsed(true)
     } else {
       setCollapsed(false)
