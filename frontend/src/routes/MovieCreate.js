@@ -29,11 +29,10 @@ const NoPreview = styled.div`
   alt: poster;
 `
 
-
 const MovieCreate = (props) => {
   const [title, setTitle] = useState("");
-  const [time, setTime] = useState("");
-  const [rate, setRate] = useState("");
+  const [time, setTime] = useState(0);
+  const [rate, setRate] = useState("ALL");
   const [poster, setPoster] = useState("");
   const [story, setStory] = useState("");
   const [date, setDate] = useState([]);
@@ -71,16 +70,16 @@ const MovieCreate = (props) => {
           <Col md={7}>
             <Row style={{height: "50%", padding:"0 16px 0 16px"}}>
               <Form.Label>Title</Form.Label>
-              <Form.Control onChange={e => setTitle(e.target.value)}/>
+              <Form.Control onChange={e => setTitle(e.target.value)} value={title}/>
             </Row>
             <Row style={{height: "50%"}}>
               <Col>
                 <Form.Label>Time</Form.Label>
-                <Form.Control onChange={e => setTime(e.target.value)}/>
+                <Form.Control onChange={e => setTime(e.target.value)} value={time}/>
               </Col>
               <Col>
                 <Form.Label>Rate</Form.Label>
-                <Form.Control as="select" onChange={e => setRate(e.target.value)}>
+                <Form.Control as="select" onChange={e => setRate(e.target.value)} value={rate}>
                   <option>ALL</option>
                   <option>12</option>
                   <option>15</option>
@@ -117,7 +116,7 @@ const MovieCreate = (props) => {
         <Row style={RowBlockStyle}>
           <Col>
             <Form.Label>Story</Form.Label>
-            <Form.Control as="textarea" rows={5} onChange={e => setStory(e.target.value)}/>
+            <Form.Control as="textarea" rows={5} onChange={e => setStory(e.target.value)} value={story}/>
           </Col>
         </Row>
 
@@ -173,7 +172,7 @@ const MovieCreate = (props) => {
         <Row style={{textAlign:"center"}}>
           <Col>
             <ButtonBox>
-              <Button variant="dark" style={{marginRight: "10px"}}>Submit</Button>
+              <Button variant="dark" type="button" style={{marginRight: "10px"}}>Submit</Button>
               <Button variant="light" type="button" onClick={() => props.history.goBack(1)}>Cancle</Button>
             </ButtonBox>
           </Col>
