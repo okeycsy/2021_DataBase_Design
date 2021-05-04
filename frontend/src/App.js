@@ -9,6 +9,7 @@ import SignIn from "./routes/SignIn";
 import Movie from "./routes/Movie"
 import MovieCreate from "./routes/MovieCreate";
 import CustomerManagement from "./routes/CustomerManagement";
+import ScheduleManagement from "./routes/ScheduleManagement";
 
 const Container = styled.div`
   display: flex;
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/signin" exact={true} component={SignIn} />
             <Route path="/moviecreate" exact={true} component={MovieCreate} />
             <Route path="/admin/customermanagement" exact={true} component={CustomerManagement} />
+            <Route path="/admin/schedulemanagement" exact={true} component={ScheduleManagement} />
         </BrowserRouter>
       </Container>
   )
