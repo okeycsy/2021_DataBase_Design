@@ -23,7 +23,7 @@ const App = () => {
             <Navigation />
             <Route path="/" exact={true} component={Movie} />
             <Route path="/signin" exact={true} component={SignIn} />
-            <Route path="/moviecreate" exact={true} component={MovieCreate} />
+            <Route path="/admin/moviecreate" exact={true} component={MovieCreate} />
             <Route path="/admin/customermanagement" exact={true} component={CustomerManagement} />
             <Route path="/admin/schedulemanagement" exact={true} component={ScheduleManagement} />
         </BrowserRouter>

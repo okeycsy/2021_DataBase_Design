@@ -1,10 +1,10 @@
-import React, {  useState } from "react";
+import { createContext, useState } from "react";
 import { Container, Row, Col, Button, ProgressBar } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { SelectCinema, SelectTheater, SelectMovie, SelectStartTime, CheckResult } from "../components/ScheduleManagementComponents";
 
-export const ScheduleManagementContext = React.createContext();
+export const ScheduleManagementContext = createContext();
 
 const ScheduleManagement = () => {
   const [schedule, setSchedule] = useState({
@@ -42,11 +42,31 @@ const ScheduleManagement = () => {
       </Row>
 
       <Row>
-        <Col><Button onClick={prevHandler}>Prev</Button></Col>
-        <Col><Button onClick={nextHandler}>Next</Button></Col>
+        <Col>
+          <Button
+            onClick={prevHandler}
+            disabled={step === 0}
+            variant="dark"
+          >
+            Prev
+          </Button></Col>
+        <Col>
+          <Button
+            onClick={nextHandler}
+            disabled={
+              (step === 0 && schedule.cinema === "") ||
+              (step === 1 && schedule.theater === "") ||
+              (step === 2 && schedule.movie === "") ||
+              (step === 3 && schedule.startTime === "")
+            }
+            variant="dark"
+          >
+            Next
+          </Button>
+        </Col>
       </Row>
       <Row>
-        <Col><ProgressBar now={step * 25}/></Col>
+        <Col><ProgressBar now={step * 25} variant="dark"/></Col>
       </Row>
     </Container>
   )

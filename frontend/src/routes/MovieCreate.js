@@ -25,21 +25,23 @@ const NoPreview = styled.div`
   width: 150px;
   text-align: center;
   vertical-align: middle;
-  border: 1px solid;
   alt: poster;
+  background-color: #D0D0D0;
 `
 
 const MovieCreate = (props) => {
-  const [title, setTitle] = useState("");
-  const [time, setTime] = useState(0);
-  const [rate, setRate] = useState("ALL");
-  const [poster, setPoster] = useState("");
-  const [story, setStory] = useState("");
-  const [date, setDate] = useState([]);
-  const [nation, setNation] = useState([]);
-  const [genre, setGenre] = useState([]);
-  const [director, setDirector] = useState([]);
-  const [actor, setActor] = useState([]);
+  const [movie, setMovie] = useState({
+    title: "",
+    time: 0,
+    rate: "ALL",
+    poster: "",
+    story: "",
+    date: [],
+    nation: [], 
+    genre: [], 
+    director: [], 
+    actor: []
+  });
 
   const [numDate, setNumDate] = useState(1);
   const [numDirector, setNumDirector] = useState(1);
@@ -55,7 +57,7 @@ const MovieCreate = (props) => {
     const imageUrl = URL.createObjectURL(imageFile);
 
     setPreview(imageUrl);
-    setPoster(imageFile);
+    setMovie({...movie, poster:imageFile})
   }
 
   const allGenres = ["액션", "멜로", "드라마", "코메디", "무협", "SF", "에로"];
@@ -70,16 +72,16 @@ const MovieCreate = (props) => {
           <Col md={7}>
             <Row style={{height: "50%", padding:"0 16px 0 16px"}}>
               <Form.Label>Title</Form.Label>
-              <Form.Control onChange={e => setTitle(e.target.value)} value={title}/>
+              <Form.Control onChange={e => setMovie({...movie, title:e.target.value})} value={movie.title}/>
             </Row>
             <Row style={{height: "50%"}}>
               <Col>
                 <Form.Label>Time</Form.Label>
-                <Form.Control onChange={e => setTime(e.target.value)} value={time}/>
+                <Form.Control onChange={e => setMovie({...movie, time:e.target.value})} value={movie.time}/>
               </Col>
               <Col>
                 <Form.Label>Rate</Form.Label>
-                <Form.Control as="select" onChange={e => setRate(e.target.value)} value={rate}>
+                <Form.Control as="select" onChange={e => setMovie({...movie, rate:e.target.value})} value={movie.rate}>
                   <option>ALL</option>
                   <option>12</option>
                   <option>15</option>
@@ -108,7 +110,7 @@ const MovieCreate = (props) => {
           <Col>
             <Form.Label>Genre</Form.Label>
             <Row>
-              {allGenres.map((genre, index) => <Col><Form.Check key={index} label={genre} type="checkbox" id={`FormGenre${index}`}/></Col>)}
+              {allGenres.map((genre, index) => <Col key={index}><Form.Check label={genre} type="checkbox" id={`FormGenre${index}`}/></Col>)}
             </Row>
           </Col>
         </Row>
@@ -116,7 +118,7 @@ const MovieCreate = (props) => {
         <Row style={RowBlockStyle}>
           <Col>
             <Form.Label>Story</Form.Label>
-            <Form.Control as="textarea" rows={5} onChange={e => setStory(e.target.value)} value={story}/>
+            <Form.Control as="textarea" rows={5} onChange={e => setMovie({...movie, story:e.target.value})} value={movie.story}/>
           </Col>
         </Row>
 
