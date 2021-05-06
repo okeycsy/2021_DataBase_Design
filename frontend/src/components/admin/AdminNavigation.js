@@ -64,23 +64,23 @@ const AdminNavigation = () => {
             </MenuItem>
 
             <MenuItem icon={<MovieIcon />}>
-              <Link to="/admin/moviemanagement" />
+              <Link to="/admin/moviemanagement">Movie</Link>
             </MenuItem>
 
             <MenuItem icon={<ShowIcon />}>
-              <Link to="/admin/schedulemanagement" />
+              <Link to="/admin/schedulemanagement">Schedule</Link>
             </MenuItem>
 
             <MenuItem icon={<SeatIcon />}>
-              <Link to="/admin/seatmanagement" />
+              <Link to="/admin/seatmanagement">Seat</Link>
             </MenuItem>
 
             <MenuItem icon={<TicketIcon />}>
-              <Link to="/admin/ticketmanagement" />
+              <Link to="/admin/ticketmanagement">Ticket</Link>
             </MenuItem>
 
             <MenuItem icon={<CustomerIcon />}>
-              <Link to="/admin/customermanagement" />
+              <Link to="/admin/customermanagement">Customer</Link>
             </MenuItem>
           </Menu>
         </SidebarContent>

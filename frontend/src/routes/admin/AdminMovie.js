@@ -53,19 +53,22 @@ const AdminMovie = (props) => {
 
   const [preview, setPreview] = useState("");
   const posterHandler = (e) => {
-    const imageFile = e.target.files[0];
-    const imageUrl = URL.createObjectURL(imageFile);
+    try {
+      const imageFile = e.target.files[0];
+      const imageUrl = URL.createObjectURL(imageFile);
+  
+      setPreview(imageUrl);
+      setMovie({...movie, poster:imageFile})
+    } catch(error) {
 
-    setPreview(imageUrl);
-    setMovie({...movie, poster:imageFile})
+    }
   }
 
   const allGenres = ["액션", "멜로", "드라마", "코메디", "무협", "SF", "에로"];
 
-  
-
   return (
     <Container>
+
       <Form>
 
         <Row style={RowBlockStyle}>
