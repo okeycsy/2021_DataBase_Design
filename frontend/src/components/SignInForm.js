@@ -5,8 +5,6 @@ import styled from 'styled-components';
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { post } from "axios";
-
 const ContainerStyle = {
     display: "table",
     maxWidth: "693px",
@@ -39,14 +37,14 @@ const SignInForm = () => {
         <Row><Col>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>ID</Form.Label>
-          <Form.Control ref={idInput} type="text" placeholder="Enter ID" onChange={e => setID(e.target.value)} />
+          <Form.Control ref={idInput} type="text" placeholder="Enter ID" onChange={e => setID(e.target.value)} value={id}/>
         </Form.Group>
         </Col></Row>
 
         <Row><Col>
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Enter Password" onChange={e => setPW(e.target.value)} />
+          <Form.Control type="password" placeholder="Enter Password" onChange={e => setPW(e.target.value)} value={pw}/>
         </Form.Group>
         </Col></Row>
 

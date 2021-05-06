@@ -1,4 +1,4 @@
-import { Figure, Container, Row } from "react-bootstrap";
+import { Figure, Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -66,7 +66,7 @@ const MovieCard = () => {
       />
       <Container>
       <Figure.Caption style={FigureTitleStyle}>더 스파이</Figure.Caption>
-      <Figure.Caption style={FigureTitleStyle}>더 스파이</Figure.Caption>
+      <Figure.Caption style={FigureDiscriptionStyle}>더 스파이</Figure.Caption>
       </Container>
     </Figure>
     </Link>

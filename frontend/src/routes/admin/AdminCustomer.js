@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from "styled-components";
@@ -16,10 +16,10 @@ const ButtonBox = styled.div`
   float:right;
 `
 
-const CustomerManagement = () => {
+const AdminCustomer = () => {
   const [inputID, setInputID] = useState("");
   const [selectedID, setSelectedID] = useState("");
-  const [listID, setListID] = useState(["A", "B", "C"]);
+  const listID = ["A", "B", "C"];
 
   return (
     <Container>
@@ -28,7 +28,7 @@ const CustomerManagement = () => {
         <Col>
           <Form.Label>ID</Form.Label>
           <ButtonBox><Button variant="dark">Search</Button></ButtonBox>
-          <Form.Control onChange={e => setInputID(e.target.value)}/>
+          <Form.Control onChange={e => setInputID(e.target.value)} value={inputID}/>
         </Col>
       </Row>
 
@@ -51,4 +51,4 @@ const CustomerManagement = () => {
   )
 }
 
-export default CustomerManagement;
+export default AdminCustomer;

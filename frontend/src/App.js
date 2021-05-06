@@ -4,12 +4,16 @@ import styled from 'styled-components';
 
 
 
-import Navigation from "./components/Navigation";
+
 import SignIn from "./routes/SignIn";
 import Movie from "./routes/Movie"
-import MovieCreate from "./routes/MovieCreate";
-import CustomerManagement from "./routes/CustomerManagement";
-import ScheduleManagement from "./routes/ScheduleManagement";
+
+import AdminNavigation from "./components/admin/AdminNavigation";
+import AdminMovie from "./routes/admin/AdminMovie";
+import AdminSchedule from "./routes/admin/AdminSchedule";
+import AdminSeat from "./routes/admin/AdminSeat";
+import AdminTicket from "./routes/admin/AdminTicket";
+import AdminCustomer from "./routes/admin/AdminCustomer";
 
 const Container = styled.div`
   display: flex;
@@ -20,12 +24,19 @@ const App = () => {
   return (
       <Container>
         <BrowserRouter>
-            <Navigation />
+            
             <Route path="/" exact={true} component={Movie} />
             <Route path="/signin" exact={true} component={SignIn} />
-            <Route path="/admin/moviecreate" exact={true} component={MovieCreate} />
-            <Route path="/admin/customermanagement" exact={true} component={CustomerManagement} />
-            <Route path="/admin/schedulemanagement" exact={true} component={ScheduleManagement} />
+
+            <Route path="/admin">
+              <AdminNavigation />
+              <Route path="/admin/moviemanagement" exact={true} component={AdminMovie} />
+              <Route path="/admin/schedulemanagement" exact={true} component={AdminSchedule} />
+              <Route path="/admin/seatmanagement" exact={true} component={AdminSeat} />
+              <Route path="/admin/ticketManagement" exact={true} component={AdminTicket} />
+              <Route path="/admin/customermanagement" exact={true} component={AdminCustomer} />
+            </Route>   
+            
         </BrowserRouter>
       </Container>
   )

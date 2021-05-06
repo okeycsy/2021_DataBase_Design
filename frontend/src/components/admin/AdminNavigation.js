@@ -7,12 +7,12 @@ import { useEffectOnce } from "react-use";
 import { ProSidebar, SidebarHeader, SidebarContent, SidebarFooter, Menu, MenuItem } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 
-import HomeIcon from "./icon/HomeIcon";
-import SeatIcon from "./icon/SeatIcon";
-import MovieIcon from "./icon/MovieIcon";
-import ShowIcon from "./icon/ShowIcon";
-import CustomerIcon from "./icon/CustomerIcon";
-import TicketIcon from "./icon/TicketIcon";
+import HomeIcon from "../icon/HomeIcon";
+import SeatIcon from "../icon/SeatIcon";
+import MovieIcon from "../icon/MovieIcon";
+import ShowIcon from "../icon/ShowIcon";
+import CustomerIcon from "../icon/CustomerIcon";
+import TicketIcon from "../icon/TicketIcon";
 
 const Container = styled.div`
   height: 100vh;
@@ -21,7 +21,7 @@ const Container = styled.div`
   top: 0;
 `
 
-const Navigation = () => {
+const AdminNavigation = () => {
   const [isLoading, setIsLoding] = useState(true)
   const [collapsed, setCollapsed] = useState(false)
 
@@ -64,23 +64,23 @@ const Navigation = () => {
             </MenuItem>
 
             <MenuItem icon={<MovieIcon />}>
-              <Link to="/admin">Movie</Link>
+              <Link to="/admin/moviemanagement" />
             </MenuItem>
 
             <MenuItem icon={<ShowIcon />}>
-              <Link to="/admin">Show</Link>
+              <Link to="/admin/schedulemanagement" />
             </MenuItem>
 
             <MenuItem icon={<SeatIcon />}>
-              <Link to="/admin">Seat</Link>
+              <Link to="/admin/seatmanagement" />
             </MenuItem>
 
             <MenuItem icon={<TicketIcon />}>
-              <Link to="/admin">Ticket</Link>
+              <Link to="/admin/ticketmanagement" />
             </MenuItem>
 
             <MenuItem icon={<CustomerIcon />}>
-              <Link to="/admin">Customer</Link>
+              <Link to="/admin/customermanagement" />
             </MenuItem>
           </Menu>
         </SidebarContent>
@@ -96,4 +96,4 @@ const Navigation = () => {
   )
 }
 
-export default Navigation;
+export default AdminNavigation;

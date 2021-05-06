@@ -29,7 +29,7 @@ const NoPreview = styled.div`
   background-color: #D0D0D0;
 `
 
-const MovieCreate = (props) => {
+const AdminMovie = (props) => {
   const [movie, setMovie] = useState({
     title: "",
     time: 0,
@@ -185,4 +185,4 @@ const MovieCreate = (props) => {
   );
 }
 
-export default MovieCreate;
+export default AdminMovie;
