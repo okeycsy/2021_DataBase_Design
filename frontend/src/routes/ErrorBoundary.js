@@ -7,17 +7,18 @@ import ErrorIcon from "../components/icon/ErrorIcon";
 
 const tremble = keyframes`
   0% {left:0px; top:0px;}
-  33% {left:-20px; top:0px;}
-  66% {left:20px; top:0px;} 
+  1.5% {left:-20px; top:0px;} 3% {left:20px; top:0px;}
+  4.5% {left:-20px; top:0px;} 6% {left:20px; top:0px;}
+  7% {left:0px; top:0px;}
   100% {left:0px; top:0px;}
 `;
 
 const TrembleDiv = styled.div`
   position: relative;
   animation-name: ${tremble};
-  animation-duration: 0.1s;
+  animation-duration: 3s;
   animation-direction: alternate;
-  animation-iteration-count: 3;
+  animation-iteration-count: infinite;
 
 `;
 // animation: name | duration | timing-function | delay | iteration-count | direction | fill-mode | play-state> [,...];
