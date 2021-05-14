@@ -18,6 +18,8 @@ import AdminSeat from "./routes/admin/AdminSeat";
 import AdminTicket from "./routes/admin/AdminTicket";
 import AdminCustomer from "./routes/admin/AdminCustomer";
 
+import UserNavigation from "./components/user/UserNavigation";
+
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -39,21 +41,25 @@ const App = () => {
               <Route path="/admin">
                 <AdminNavigation />
                 <Switch>
-                <Route path="/admin" exact={true} component={AdminHome} />
-                <Route path="/admin/moviemanagement" exact={true} component={AdminMovie} />
-                <Route path="/admin/schedulemanagement" exact={true} component={AdminSchedule} />
-                <Route path="/admin/seatmanagement" exact={true} component={AdminSeat} />
-                <Route path="/admin/ticketManagement" exact={true} component={AdminTicket} />
-                <Route path="/admin/customermanagement" exact={true} component={AdminCustomer} />
-                <Route component={NotFound} />
+                  <Route path="/admin" exact={true} component={AdminHome} />
+                  <Route path="/admin/moviemanagement" exact={true} component={AdminMovie} />
+                  <Route path="/admin/schedulemanagement" exact={true} component={AdminSchedule} />
+                  <Route path="/admin/seatmanagement" exact={true} component={AdminSeat} />
+                  <Route path="/admin/ticketManagement" exact={true} component={AdminTicket} />
+                  <Route path="/admin/customermanagement" exact={true} component={AdminCustomer} />
+                  <Route component={NotFound} />
                 </Switch>
               </Route>
 
-              <Route path="/" exact={true} component={Movie} />
-              <Route path="/signin" exact={true} component={SignIn} />
-              <Route path="/errorboundarytest" exact={true} component={ErrorBoundaryTest} />
-              <Route component={NotFound} />
-          
+              <Route path="/">
+                <UserNavigation />
+                <Switch>
+                  <Route path="/" exact={true} component={Movie} />
+                  <Route path="/signin" exact={true} component={SignIn} />
+                  <Route path="/errorboundarytest" exact={true} component={ErrorBoundaryTest} />
+                  <Route component={NotFound} />
+                </Switch>
+              </Route>
             </Switch>
           </ErrorBoundary>
         </BrowserRouter>
