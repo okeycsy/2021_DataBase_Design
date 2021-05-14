@@ -1,4 +1,4 @@
-const NotFoundIcon = ({size=48}) => {
+const NotFoundIcon = ({size=256}) => {
   return (
 	<svg
 	  xmlns="http://www.w3.org/2000/svg"

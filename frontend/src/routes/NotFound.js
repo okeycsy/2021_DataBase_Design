@@ -25,7 +25,7 @@ const NotFound = () => {
       <SubContainer>
         <BlinkDiv>
           <NotFoundIcon
-            size={266 > window.innerWidth/3 ? window.innerWidth/3 : 266 }
+            size={256 > window.innerWidth/3 ? window.innerWidth/3 : 256 }
           />
         </BlinkDiv>
         <div>
