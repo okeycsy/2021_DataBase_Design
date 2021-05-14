@@ -15,6 +15,7 @@ const Seat = styled.div`
   border: ${props => props.isSeat ? "1px solid black" : "None"};
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  margin: 2px;
 `
 
 const AdminSeat = () => {
