@@ -49,6 +49,7 @@ const App = () => {
                 <Route path="/admin/seatmanagement" exact={true} component={AdminSeat} />
                 <Route path="/admin/ticketManagement" exact={true} component={AdminTicket} />
                 <Route path="/admin/customermanagement" exact={true} component={AdminCustomer} />
+                <Route component={NotFound} />   
               </Route>
 
               <Route component={NotFound} />   
