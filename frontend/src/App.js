@@ -36,23 +36,23 @@ const App = () => {
         <BrowserRouter>
           <ErrorBoundary>
             <Switch>
-          
-              <Route path="/" exact={true} component={Movie} />
-              <Route path="/signin" exact={true} component={SignIn} />
-              <Route path="/errorboundarytest" exact={true} component={ErrorBoundaryTest} />
-
               <Route path="/admin">
                 <AdminNavigation />
+                <Switch>
                 <Route path="/admin" exact={true} component={AdminHome} />
                 <Route path="/admin/moviemanagement" exact={true} component={AdminMovie} />
                 <Route path="/admin/schedulemanagement" exact={true} component={AdminSchedule} />
                 <Route path="/admin/seatmanagement" exact={true} component={AdminSeat} />
                 <Route path="/admin/ticketManagement" exact={true} component={AdminTicket} />
                 <Route path="/admin/customermanagement" exact={true} component={AdminCustomer} />
-                <Route component={NotFound} />   
+                <Route component={NotFound} />
+                </Switch>
               </Route>
 
-              <Route component={NotFound} />   
+              <Route path="/" exact={true} component={Movie} />
+              <Route path="/signin" exact={true} component={SignIn} />
+              <Route path="/errorboundarytest" exact={true} component={ErrorBoundaryTest} />
+              <Route component={NotFound} />
           
             </Switch>
           </ErrorBoundary>
