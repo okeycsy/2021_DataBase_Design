@@ -8,9 +8,7 @@ import { ProSidebar, SidebarHeader, SidebarContent, SidebarFooter, Menu, MenuIte
 import 'react-pro-sidebar/dist/css/styles.css';
 
 import HomeIcon from "../icon/HomeIcon";
-import SeatIcon from "../icon/SeatIcon";
 import MovieIcon from "../icon/MovieIcon";
-import ShowIcon from "../icon/ShowIcon";
 import CustomerIcon from "../icon/CustomerIcon";
 import TicketIcon from "../icon/TicketIcon";
 
@@ -67,20 +65,12 @@ const UserNavigation = () => {
               <Link to="/movie">Movie</Link>
             </MenuItem>
 
-            <MenuItem icon={<ShowIcon />}>
-              <Link to="/temp">Schedule</Link>
-            </MenuItem>
-
-            <MenuItem icon={<SeatIcon />}>
-              <Link to="/temp">Seat</Link>
-            </MenuItem>
-
             <MenuItem icon={<TicketIcon />}>
-              <Link to="/temp">Ticket</Link>
+              <Link to="/ticket">Ticket</Link>
             </MenuItem>
 
             <MenuItem icon={<CustomerIcon />}>
-              <Link to="/temp">Customer</Link>
+              <Link to="/myinfo">My Info</Link>
             </MenuItem>
           </Menu>
         </SidebarContent>

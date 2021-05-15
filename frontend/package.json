@@ -14,8 +14,10 @@
     "react-responsive": "^8.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-swipe": "^6.0.4",
     "react-use": "^17.2.4",
     "styled-components": "^5.2.3",
+    "swipe-js-iso": "^2.1.5",
     "web-vitals": "^1.1.1"
   },
   "scripts": {

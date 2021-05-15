@@ -9,7 +9,6 @@ import ErrorBoundary from "./routes/ErrorBoundary";
 import ErrorBoundaryTest from "./routes/ErrorBoundaryTest";
 
 import SignIn from "./routes/SignIn";
-import Movie from "./routes/Movie"
 
 import AdminNavigation from "./components/admin/AdminNavigation";
 import AdminMovie from "./routes/admin/AdminMovie";
@@ -19,6 +18,9 @@ import AdminTicket from "./routes/admin/AdminTicket";
 import AdminCustomer from "./routes/admin/AdminCustomer";
 
 import UserNavigation from "./components/user/UserNavigation";
+import Home from "./routes/user/Home"
+import Movie from "./routes/Movie"
+import Ticket from "./routes/user/Ticket";
 
 const Container = styled.div`
   display: flex;
@@ -54,8 +56,10 @@ const App = () => {
               <Route path="/">
                 <UserNavigation />
                 <Switch>
-                  <Route path="/" exact={true} component={Movie} />
+                  <Route path="/" exact={true} component={Home} />
                   <Route path="/signin" exact={true} component={SignIn} />
+                  <Route path="/movie" exact={true} component={Movie} />
+                  <Route path="/ticket" exact={true} component={Ticket} />
                   <Route path="/errorboundarytest" exact={true} component={ErrorBoundaryTest} />
                   <Route component={NotFound} />
                 </Switch>
