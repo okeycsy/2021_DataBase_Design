@@ -6,7 +6,8 @@ const ScreenStyle = {
   backgroundColor: "#c8c8c8",
   color: "white",
   fontWeight: "900",
-  fontSize: "x-large"
+  fontSize: "x-large",
+  marginBottom: "10px"
 }
 
 const Seat = styled.div`
@@ -37,8 +38,8 @@ const AdminSeat = () => {
   }
 
   return (
-    <Container>
-      <Container>
+    <Container style={{border: "1px solid"}}>
+      <Container style={{border: "1px solid"}}>
         <Row
           className="justify-content-md-center"
           style={ScreenStyle}
@@ -48,7 +49,7 @@ const AdminSeat = () => {
 
         {shape2.map((seatsArray, index) => {
           return (
-            <Row key={index}>
+            <Row key={index} className="justify-content-md-center">
               {seatsArray.map((seat, index) => 
                 <Seat
                   key={index}
@@ -64,6 +65,37 @@ const AdminSeat = () => {
         })}
       </Container>
 
+
+      <Container style={{border: "1px solid"}}>
+        
+
+        <Row style={{border: "1px solid red"}}>
+          <Col>
+          <Form.Control as="select">
+            <option>서울</option>
+            <option>경기/인천</option>
+          </Form.Control>
+          </Col>
+          <Col>
+          <Form.Control as="select">
+            <option>짱짱지점</option>
+            <option>최고지점</option>
+          </Form.Control>
+          </Col>
+          <Col>
+          <Form.Control as="select">
+            <option>1관</option>
+            <option>2관</option>
+          </Form.Control>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+          <Button>Update</Button>
+          </Col>
+        </Row>
+      </Container>
     </Container>
   )
 };
