@@ -7,6 +7,7 @@ import { useEffectOnce } from "react-use";
 import { ProSidebar, SidebarHeader, SidebarContent, SidebarFooter, Menu, MenuItem } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 
+import LogoIcon from "../icon/LogoIcon";
 import HomeIcon from "../icon/HomeIcon";
 import SeatIcon from "../icon/SeatIcon";
 import MovieIcon from "../icon/MovieIcon";
@@ -52,9 +53,9 @@ const AdminNavigation = () => {
         collapsed={collapsed}
       >
         <SidebarHeader
-          style={{"textAlign": "center"}}
+          style={{"textAlign": "center", marginTop:"10px", paddingBottom:"10px"}}
         >
-          <p>Header</p>
+          <LogoIcon size={collapsed ? 72 : 128}/>
         </SidebarHeader>
 
         <SidebarContent>
@@ -84,12 +85,6 @@ const AdminNavigation = () => {
             </MenuItem>
           </Menu>
         </SidebarContent>
-
-        <SidebarFooter
-          style={{"textAlign": "center"}}
-        >
-          <p>Footer</p>
-        </SidebarFooter>
       </ProSidebar>
       }
     </Container>
