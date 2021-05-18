@@ -37,16 +37,12 @@ const Movie = () => {
         <Col style={ColStyle}><MovieCard /></Col>
         <Col style={ColStyle}><MovieCard /></Col>
         <Col style={ColStyle}><MovieCard /></Col>
-        </Row>
-        <Row style={RowStyle}>
-        <Col style={ColStyle}><MovieCard /></Col>
-        <Col style={ColStyle}><MovieCard /></Col>
-        <Col style={ColStyle}><MovieCard /></Col>
         <Col style={ColStyle}><MovieCard /></Col>
         </Row>
         </>
       ) : (
         <>
+        <Row style={RowStyle}><Col style={ColStyle}><MovieCard2 /></Col></Row>
         <Row style={RowStyle}><Col style={ColStyle}><MovieCard2 /></Col></Row>
         <Row style={RowStyle}><Col style={ColStyle}><MovieCard2 /></Col></Row>
         <Row style={RowStyle}><Col style={ColStyle}><MovieCard2 /></Col></Row>

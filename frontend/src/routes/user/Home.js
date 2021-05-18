@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import Movie from "../Movie";
+
 const SwipeContainer = styled.div`
   margin: 2%;
 `
@@ -18,7 +20,6 @@ const SwipeButton = styled.button`
 
 const SwipeImage = styled.img`
   width: 100%;
-  border: 1px solid black;
 `
 
 const Home = () => {
@@ -55,6 +56,9 @@ const Home = () => {
         </div>
       </SwipeContainer>
 
+      <Container>
+        <Movie />
+      </Container>
 
     </Container>
 

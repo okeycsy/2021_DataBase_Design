@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { useEffectOnce } from "react-use";
 
-import { ProSidebar, SidebarHeader, SidebarContent, SidebarFooter, Menu, MenuItem } from 'react-pro-sidebar';
+import { ProSidebar, SidebarHeader, SidebarContent, Menu, MenuItem } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
 
 import LogoIcon from "../icon/LogoIcon";

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Container, Row, Col, Button, ProgressBar } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import ShowTicket from "../../components/user/ShowTicket";
 
 const Ticket = () => {
   const [step, setStep] = useState(0);
@@ -13,17 +14,17 @@ const Ticket = () => {
   });
 
   const prevDisabled = step === 0;
-  const nextDisabled = (step === 0 && ticketInfo.cinema === "" || ticketInfo.movie === "" || ticketInfo.datetime === "")
+  const nextDisabled = step === 0 && (ticketInfo.cinema === "" || ticketInfo.movie === "" || ticketInfo.datetime === "");
 
   return (
     <Container>
        <Row>
-           <Col>sdf</Col>
+           <Col><ShowTicket setTicketInfo={setTicketInfo}/></Col>
        </Row>
 
       <Row>
-        <Col><Button disabled={prevDisabled}>Prev</Button></Col>
-        <Col><Button disabled={nextDisabled}>Next</Button></Col>
+        <Col><Button disabled={prevDisabled} onClick={() => setStep(step - 1)}>Prev</Button></Col>
+        <Col><Button disabled={nextDisabled} onClick={() => setStep(step + 1)}>Next</Button></Col>
       </Row>
 
       <Row>
