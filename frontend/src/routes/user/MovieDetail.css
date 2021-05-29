@@ -1,0 +1,27 @@
+.mainImage{
+  width : 30%;
+  height : 200px;
+  margin-top:50px;
+}
+.NameTable{
+  margin-top:50px;
+  left : 500px;
+  text-align: center;
+}
+.Table1{
+  width : 500%;
+  background-color: gray;
+  border-radius: 5%;
+
+  margin-top:50px;
+  /*margin-bottom: 50px;*/
+  margin-right: 0%;
+  margin-left : 50%;
+
+} 
+
+.storybox{
+  width: 300%;
+  margin-left : 100px;
+  margin-right: 30px;
+}

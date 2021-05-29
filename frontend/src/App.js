@@ -21,6 +21,7 @@ import UserNavigation from "./components/user/UserNavigation";
 import Home from "./routes/user/Home"
 import Movie from "./routes/Movie"
 import Ticket from "./routes/user/Ticket";
+import MovieDetail from "./routes/user/MovieDetail"
 
 const Container = styled.div`
   display: flex;
@@ -61,6 +62,9 @@ const App = () => {
                   <Route path="/movie" exact={true} component={Movie} />
                   <Route path="/ticket" exact={true} component={Ticket} />
                   <Route path="/errorboundarytest" exact={true} component={ErrorBoundaryTest} />
+
+                  <Route path="/moviedetail" exact = {true} component = {MovieDetail} />
+
                   <Route component={NotFound} />
                 </Switch>
               </Route>
