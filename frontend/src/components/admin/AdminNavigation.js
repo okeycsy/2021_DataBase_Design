@@ -55,7 +55,7 @@ const AdminNavigation = () => {
         <SidebarHeader
           style={{"textAlign": "center", marginTop:"10px", paddingBottom:"10px"}}
         >
-          <LogoIcon size={collapsed ? 72 : 128}/>
+          <Link to="/admin"><LogoIcon size={collapsed ? 72 : 128}/></Link>
         </SidebarHeader>
 
         <SidebarContent>
