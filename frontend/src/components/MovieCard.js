@@ -1,6 +1,6 @@
-import { Figure } from "react-bootstrap";
+import { useState } from "react";
+import { Figure, Modal, Button, Container, Row, Col } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const FigureStyle = {
@@ -49,22 +49,55 @@ const Rate = styled.span`
   white-space: nowrap;
 `
 
-const MovieCard = () => {
-  const RateColor = "#ED4C6B"
+const MovieCard = ({title, src, rate, story}) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  let RateColor = "#5BC77E"
+  if (rate === "12") RateColor="#4DD6FF";
+  else if (rate === "15") RateColor="#FFC134";
+  else if (rate === "18") RateColor="#ED4C6B";
   // #5BC77E #4DD6FF #FFC134 #ED4C6B
   return (
-    <Link to="/movie/123">
-    <Figure style={FigureStyle}>
-      <Rate color={RateColor}>{"청불"}</Rate>
+    <>
+    <Figure style={FigureStyle} onClick={handleShow}>
+      <Rate color={RateColor}>{rate==="18" ? "청불" : rate}</Rate>
       <Figure.Image
-        src='https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202104/17134_103_1.jpg'
-        alt="더 스파이"
+        src={src}
+        alt="poster"
         style={FigureImageStyle}
       />
-      <Figure.Caption style={FigureTitleStyle}>더 스파이</Figure.Caption>
-      <Figure.Caption style={FigureDiscriptionStyle}>예매율 99.8% | ☆ 4.5</Figure.Caption>
+      <Figure.Caption style={FigureTitleStyle}>
+        {title.length < 10 ? title : title.slice(0, 10) + "..."}
+      </Figure.Caption>
     </Figure>
-    </Link>
+
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>{title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Container>
+            <Row>
+              <Col>
+                <Figure.Image
+                  src={src}
+                  alt="poster"
+                  style={FigureImageStyle}
+                />
+              </Col>
+              <Col>
+                story
+              </Col>
+            </Row>
+          </Container>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>Close</Button>
+        </Modal.Footer>
+    </Modal>
+    </>
   )
 };
 
