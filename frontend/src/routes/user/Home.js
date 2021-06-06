@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import MovieCard from "../../components/MovieCard";
 
+import MovieData from "../../components/MovieData";
+
 const SwipeContainer = styled.div`
   margin: 2%;
 `
@@ -29,13 +31,7 @@ const Home = () => {
     "https://caching2.lottecinema.co.kr/lotte_image/2021/Conjuring/0602/Conjuring_1920774.jpg",
     "https://caching2.lottecinema.co.kr/lotte_image/2021/Ella/Ella_1920774.jpg"
   ];
-  const movieData = [
-    {title: "크루엘라", src: "https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202105/17387_103_1.jpg", rate: "12"},
-    {title: "컨저링 3: 악마가 시켰다", src: "https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202106/17420_103_1.jpg", rate: "15"},
-    {title: "분노의 질주: 더 얼티메이트", src: "https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202005/15586_103_1.jpg", rate: "12"},
-    {title: "극장판 귀멸의 칼날: 무한열차편", src: "https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202101/16908_103_1.jpg", rate: "15"},
-    {title: "낫아웃", src: "https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202106/17450_103_1.jpg", rate: "15"}
-  ];
+
 
   let reactSwipeEl;
 
@@ -68,12 +64,16 @@ const Home = () => {
 
       <Container>
         <Row>
-        {movieData.map(data => 
+        {MovieData.slice(0,5).map(data => 
         <Col>
           <MovieCard
             title={data.title}
             src={data.src}
             rate={data.rate}
+            genre={data.genre}
+            time={data.time}
+            director={data.director}
+            actor={data.actor}
           />
           </Col>
         )}

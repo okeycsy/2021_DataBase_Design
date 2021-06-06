@@ -20,10 +20,10 @@ const FigureTitleStyle = {
   textAlign: "center",
 }
 
-const FigureDiscriptionStyle = {
-  textAlign: "center",
-  fontSize: "0.7rem",
-}
+// const FigureDiscriptionStyle = {
+//   textAlign: "center",
+//   fontSize: "0.7rem",
+// }
 
 const Rate = styled.span`
   z-index: 2;
@@ -49,7 +49,7 @@ const Rate = styled.span`
   white-space: nowrap;
 `
 
-const MovieCard = ({title, src, rate, story}) => {
+const MovieCard = ({title, src, rate, genre, time, director, actor}) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -80,7 +80,7 @@ const MovieCard = ({title, src, rate, story}) => {
         <Modal.Body>
           <Container>
             <Row>
-              <Col>
+              <Col md={5}>
                 <Figure.Image
                   src={src}
                   alt="poster"
@@ -88,13 +88,17 @@ const MovieCard = ({title, src, rate, story}) => {
                 />
               </Col>
               <Col>
-                story
+                <p style={{fontSize: "small"}}>장르: {genre}</p>
+                <p style={{fontSize: "small"}}>감독: {director}</p>
+                <p style={{fontSize: "small"}}>출연: {actor}</p>
+                <p style={{fontSize: "small"}}>상영시간: {time}분</p>
               </Col>
             </Row>
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>Close</Button>
+          <Button variant="dark">Ticketing</Button>
+          <Button variant="light" onClick={handleClose}>Close</Button>
         </Modal.Footer>
     </Modal>
     </>
