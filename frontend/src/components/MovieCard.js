@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Figure, Modal, Button, Container, Row, Col } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const FigureStyle = {
   boxShadow: "0 13px 27px -5px rgba(50, 50, 75, 0.75), 0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025)",
@@ -97,7 +98,17 @@ const MovieCard = ({title, src, rate, genre, time, director, actor}) => {
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="dark">Ticketing</Button>
+          <Link
+            to={{
+              pathname: '/ticket',
+              state: {
+                title,
+                src
+              }
+            }}
+          >
+            <Button variant="dark">Ticketing</Button>
+          </Link>
           <Button variant="light" onClick={handleClose}>Close</Button>
         </Modal.Footer>
     </Modal>
