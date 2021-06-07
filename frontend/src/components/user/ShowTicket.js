@@ -33,14 +33,14 @@ const BrRowStyle = {
   margin: "15px"
 }
 
-const ShowTicket = ({ setTicketInfo }) => {
+const ShowTicket = ({ title, cinema, time, seats, src, runningTime }) => {
   return (
     <Container style={ContainerStyle}>
       <Row>
         <Col style={ColStyle}>
 
           <Figure.Image
-            src='https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202104/17134_103_1.jpg'
+            src={src}
             width={256}
             style={ImageStyle}
           />
@@ -48,21 +48,21 @@ const ShowTicket = ({ setTicketInfo }) => {
         </Col>
 
         <Col style={ColStyle}>
-          <Row style={TitleStyle}>더 스파이</Row>
+          <Row style={TitleStyle}>{title}</Row>
           
           <Row style={BrRowStyle} />
           
-          <Row style={ContentStyle}>시립대점 2021.05.19(수)</Row>
-          <Row style={ContentStyle}>09:00 ~ 23:00</Row>
+          <Row style={ContentStyle}>{cinema} {time.split(' ')[0]}</Row>
+          <Row style={ContentStyle}>{time.split(' ')[1] + " (" + ['일', '월', '화', '수', '목', '금', '토'][new Date(time.split(' ')[1]).getDay()] + ")"}</Row>
+          <Row style={ContentStyle}>{time.split(' ')[2] + " (" + runningTime + "분)"}</Row>
 
           <Row style={BrRowStyle} />
 
-          <Row style={ContentStyle}>123관</Row>
-          <Row style={ContentStyle}>A열 23번, B열 41번</Row>
+          <Row style={ContentStyle}>{seats.map(seat => seat + '번 ')}</Row>
 
           <Row style={BrRowStyle} />
 
-          <Row style={ContentStyle}>일반 2명</Row>
+          <Row style={ContentStyle}>{seats.length}명</Row>
         </Col>
       </Row>
     </Container>

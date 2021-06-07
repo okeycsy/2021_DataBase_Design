@@ -5,8 +5,7 @@ import styled from "styled-components";
 import FigureImage from "react-bootstrap/esm/FigureImage";
 import ScheduleData from "../../components/ScheduleData";
 import MovieData from "../../components/MovieData";
-
-import Payment from "../../components/user/Payment";
+import ShowTicket from "../../components/user/ShowTicket";
 
 const ScreenStyle = {
   backgroundColor: "#c8c8c8",
@@ -163,11 +162,20 @@ const Ticket = ({location}) => {
         })}
       </Container> : <></>}
       
-      {/* {step === 3 ? <Payment /> : <></>} */}
+      {step === 3 ?
+        <ShowTicket
+          title={movie.title}
+          time={selectedTime}
+          runningTime={movie.time}
+          cinema={selectedCinema}
+          src={movie.src}
+          seats={selectedSeat}
+        />
+      : <></>}
 
       <Container style={{margin: "20px"}}><Row>
-        <Col style={{textAlign: "left", marginLeft: "-27px"}}><Button disabled={prevDisabled} onClick={() => setStep(step - 1)}>Prev</Button></Col>
-        <Col style={{textAlign: "right", marginLeft: "-7px"}}><Button disabled={nextDisabled} onClick={() => setStep(step + 1)}>Next</Button></Col>
+        <Col style={{textAlign: "left", marginLeft: "-27px"}}><Button disabled={prevDisabled} variant="dark" onClick={() => setStep(step - 1)}>Prev</Button></Col>
+        <Col style={{textAlign: "right", marginLeft: "-7px"}}><Button disabled={nextDisabled} variant="dark" onClick={() => setStep(step + 1)}>Next</Button></Col>
       </Row></Container>
       
       <div >
