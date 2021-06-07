@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Container, Row, Col, Button, ProgressBar, Form, Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from "styled-components";
 import FigureImage from "react-bootstrap/esm/FigureImage";
@@ -173,14 +174,27 @@ const Ticket = ({location}) => {
         />
       : <></>}
 
-      <Container style={{margin: "20px"}}><Row>
-        <Col style={{textAlign: "left", marginLeft: "-27px"}}><Button disabled={prevDisabled} variant="dark" onClick={() => setStep(step - 1)}>Prev</Button></Col>
-        <Col style={{textAlign: "right", marginLeft: "-7px"}}><Button disabled={nextDisabled} variant="dark" onClick={() => setStep(step + 1)}>Next</Button></Col>
-      </Row></Container>
+      {step === 4 ?
+        <Container style={{textAlign: "center"}}>
+          <p style={{fontWeight: "1000", fontSize: "x-large", marginTop: "150px", marginBottom: "100px"}}>결제가 완료되었습니다.</p>
+
+          <Link to="/"><Button variant="dark">홈으로 돌아가기</Button></Link>
+        </Container>
+      : <></>}
+
+      {step < 4 ?
+        <>
+        <Container style={{margin: "20px"}}><Row>
+          <Col style={{textAlign: "left", marginLeft: "-27px"}}><Button disabled={prevDisabled} variant="dark" onClick={() => setStep(step - 1)}>Prev</Button></Col>
+          <Col style={{textAlign: "right", marginLeft: "-7px"}}><Button disabled={nextDisabled} variant="dark" onClick={() => setStep(step + 1)}>Next</Button></Col>
+        </Row></Container>
+        
+        <div >
+          <ProgressBar now={step * 100/3} variant="dark" style={{textAlign:"center"}}></ProgressBar>
+        </div>
+        </>
+      : <></>}
       
-      <div >
-        <ProgressBar now={step * 100/3} style={{textAlign:"center"}}></ProgressBar>
-      </div>
       
 
     </Container>
