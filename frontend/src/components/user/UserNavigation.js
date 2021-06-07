@@ -11,7 +11,7 @@ import LogoIcon from "../icon/LogoIcon";
 import HomeIcon from "../icon/HomeIcon";
 import MovieIcon from "../icon/MovieIcon";
 import CustomerIcon from "../icon/CustomerIcon";
-import TicketIcon from "../icon/TicketIcon";
+// import TicketIcon from "../icon/TicketIcon";
 
 const Container = styled.div`
   height: 100vh;
@@ -66,9 +66,9 @@ const UserNavigation = () => {
               <Link to="/movie">Movie</Link>
             </MenuItem>
 
-            <MenuItem icon={<TicketIcon />}>
+            {/* <MenuItem icon={<TicketIcon />}>
               <Link to="/ticket">Ticket</Link>
-            </MenuItem>
+            </MenuItem> */}
 
             <MenuItem icon={<CustomerIcon />}>
               <Link to="/myinfo">My Info</Link>

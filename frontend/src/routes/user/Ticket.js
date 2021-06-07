@@ -1,15 +1,19 @@
 import { useState } from "react";
-import { Container, Row, Col, Button, ProgressBar, Figure } from "react-bootstrap";
+import { Container, Row, Col, Button, ProgressBar, Form, Modal } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from "styled-components";
 import FigureImage from "react-bootstrap/esm/FigureImage";
+import ScheduleData from "../../components/ScheduleData";
+import MovieData from "../../components/MovieData";
+
+import Payment from "../../components/user/Payment";
 
 const ScreenStyle = {
   backgroundColor: "#c8c8c8",
   color: "white",
   fontWeight: "900",
   fontSize: "x-large",
-  marginBottom: "10px"
+  marginBottom: "50px"
 }
 
 const Seat = styled.div`
@@ -39,8 +43,37 @@ const seatShape2 = `[["A1", "A2", "A3", "A4", "", "A5", "A6", "A7", "A8", "A9", 
 
 const Ticket = ({location}) => {
   const [step, setStep] = useState(0);
-  const [selectedSeat, setSelectedSeat] = useState([]);
+  
+  // 0
+  let movie = "";
+  for (let i = 0; i < MovieData.length; i++) {
+    if (MovieData[i].title === location.state.title) {
+      movie = MovieData[i];
+      break;
+    }
+  }
 
+
+  // 1
+  const schedule = [];
+  for (let i = 0; i < ScheduleData.length; i++) {
+    if (ScheduleData[i].title === movie.title)
+      schedule.push( ScheduleData[i] );
+  }
+  const cinema = Array.from(new Set(schedule.map(s => s.cinema)));
+  const [selectedCinema, setSelectedCinema] = useState("");
+  const endTime = (dt) => {
+    dt = new Date(dt);
+    let text = ""
+    text += dt.getHours()+':'
+    text += dt.getMinutes()
+
+    return text
+  }
+  const [selectedTime, setSelectedTime] = useState("");
+
+  // 2
+  const [selectedSeat, setSelectedSeat] = useState([]);
   const shape2 = JSON.parse(seatShape2);
   const selectSeat = (target) => {
     if (target.id === "") return;
@@ -53,22 +86,24 @@ const Ticket = ({location}) => {
       seat.style.backgroundColor = "white";
       const temp = [];
       for(let i = 0; i < selectedSeat.length; i++)
-        if (target.id != selectedSeat[i]) temp.push(selectedSeat[i]);
+        if (target.id !== selectedSeat[i]) temp.push(selectedSeat[i]);
       setSelectedSeat(temp);
     }
     seat.isSelected = !seat.isSelected;
   }
   
+  const prevDisabled = step === 0;
+  const nextDisabled = (step === 1 && selectedTime === "") || (step === 2 && selectedSeat.length === 0);
 
   return (
     <Container style={{padding: "40px"}}>
        {step === 0 ? 
          <Container >
             <Row>
-              <p style={{fontSize:"x-large", fontWeight: "1000"}}>{location.state.title}</p>
+              <p style={{fontSize:"x-large", fontWeight: "1000"}}>{movie.title}</p>
             </Row>
             <Row className="justify-content-md-center">
-              <FigureImage src={location.state.src}>
+              <FigureImage src={movie.src}>
 
               </FigureImage>
             </Row>
@@ -76,8 +111,33 @@ const Ticket = ({location}) => {
          </Container> 
          : <></>}
        
+        {step === 1 ? 
+          <Container>
+            <Row>
+            <Col>
+              <Form.Label>Cinema</Form.Label>
+              <Form.Control onChange={e => setSelectedCinema(e.target.value)} style={{height: "70vh"}}  as="select" multiple>
+                {cinema.map((c, index) => 
+                  <option key={index}>{c}</option>
+                )}
+              </Form.Control>
+            </Col>
+            <Col>
+            <Form.Label>Time</Form.Label>
+              <Form.Control onChange={e => setSelectedTime(e.target.value)} style={{height: "70vh"}} as="select" multiple>
+                {schedule.map((s, index) => {
+                  if(s.cinema === selectedCinema) {
+                    return <option key={index}>{s.theater}  {s.startTime}~{endTime(new Date(s.startTime).setMinutes(new Date(s.startTime).getMinutes() + movie.time))}</option>
+                  }
+                })}
+              </Form.Control>
+            </Col>
+            </Row>
+          </Container>
+        : <></>}
 
-       {step === 2 ? <Container style={{border: "1px solid"}}>
+
+       {step === 2 ? <Container style={{border: "1px solid", height: "70vh"}}>
         <Row
           className="justify-content-md-center"
           style={ScreenStyle}
@@ -103,14 +163,15 @@ const Ticket = ({location}) => {
         })}
       </Container> : <></>}
       
+      {/* {step === 3 ? <Payment /> : <></>} */}
+
       <Container style={{margin: "20px"}}><Row>
-        <Col style={{textAlign: "left"}}><Button onClick={() => setStep(step - 1)}>Prev</Button></Col>
-        <Col style={{textAlign: "right"}}><Button onClick={() => setStep(step + 1)}>Next</Button></Col>
+        <Col style={{textAlign: "left", marginLeft: "-27px"}}><Button disabled={prevDisabled} onClick={() => setStep(step - 1)}>Prev</Button></Col>
+        <Col style={{textAlign: "right", marginLeft: "-7px"}}><Button disabled={nextDisabled} onClick={() => setStep(step + 1)}>Next</Button></Col>
       </Row></Container>
       
       <div >
-      <ProgressBar now={step * 25} style={{textAlign:"center"}}></ProgressBar>
-
+        <ProgressBar now={step * 100/3} style={{textAlign:"center"}}></ProgressBar>
       </div>
       
 

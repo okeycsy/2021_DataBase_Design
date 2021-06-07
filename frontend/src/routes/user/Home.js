@@ -36,7 +36,7 @@ const Home = () => {
   let reactSwipeEl;
 
   return (
-    <Container>
+    <Container style={{marginBottom: "30px"}}>
       <SwipeContainer>
         <ReactSwipe
           className="carousel"

@@ -10,6 +10,7 @@ import { useState } from "react";
 
 const ContainerStyle = {
   paddingTop: "9px",
+  paddingBottom: "40px",
   alignText: "center",
 }
 
@@ -55,7 +56,9 @@ const Movie = () => {
     const genres = data.genre.split(',')
     genres.map(genre => {
       if(!(allGenre.has(genre.trim()))) allGenre.add(genre.trim())
+      return null;
     });
+    return null;
   });
   allGenre = Array.from(allGenre);
 
