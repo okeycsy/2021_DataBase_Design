@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Row, Col, Button, ProgressBar, Form, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -42,8 +42,17 @@ const seatShape2 = `[["A1", "A2", "A3", "A4", "", "A5", "A6", "A7", "A8", "A9", 
 
 
 const Ticket = ({location}) => {
+  useEffect(() => {
+    const id = localStorage.getItem("db_design_user_id");
+
+    if (id === null) {
+      window.location.href = "/signin";
+    }
+  }, []);
+
+
   const [step, setStep] = useState(0);
-  
+
   // 0
   let movie = "";
   for (let i = 0; i < MovieData.length; i++) {
@@ -94,6 +103,18 @@ const Ticket = ({location}) => {
   
   const prevDisabled = step === 0;
   const nextDisabled = (step === 1 && selectedTime === "") || (step === 2 && selectedSeat.length === 0);
+
+  const ticketSave = () => {
+    localStorage.setItem("db_design_user_ticket_title", movie.title);
+    localStorage.setItem("db_design_user_ticket_time", selectedTime);
+    localStorage.setItem("db_design_user_ticket_runningTime", movie.time);
+    localStorage.setItem("db_design_user_ticket_cinema", selectedCinema);
+    localStorage.setItem("db_design_user_ticket_src", movie.src);
+    localStorage.setItem("db_design_user_ticket_seats", JSON.stringify(selectedSeat));
+
+    window.location.href = '/';
+  };
+
 
   return (
     <Container style={{padding: "40px"}}>
@@ -174,14 +195,6 @@ const Ticket = ({location}) => {
         />
       : <></>}
 
-      {step === 4 ?
-        <Container style={{textAlign: "center"}}>
-          <p style={{fontWeight: "1000", fontSize: "x-large", marginTop: "150px", marginBottom: "100px"}}>결제가 완료되었습니다.</p>
-
-          <Link to="/"><Button variant="dark">홈으로 돌아가기</Button></Link>
-        </Container>
-      : <></>}
-
       {step < 4 ?
         <>
         <Container style={{margin: "20px"}}><Row>
@@ -194,7 +207,16 @@ const Ticket = ({location}) => {
         </div>
         </>
       : <></>}
-      
+
+      {step === 4 ?
+        <Container style={{textAlign: "center"}}>
+          <p style={{fontWeight: "1000", fontSize: "x-large", marginTop: "150px", marginBottom: "100px"}}>
+            결제가 완료되었습니다.
+          </p>
+
+          <Button variant="dark" onClick={() => ticketSave()}>홈으로 돌아가기</Button>
+        </Container>
+      : <></>}
       
 
     </Container>

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import UserData from "../components/UserData";
+
 
 const ContainerStyle = {
     display: "table",
@@ -31,6 +33,29 @@ const SignInForm = () => {
     if(idInput.current) idInput.current.focus();
   });
 
+  const setUser = () => {
+    window.localStorage.setItem("db_design_user_id", id);
+    window.localStorage.setItem("db_design_user_pw", pw);
+  }
+
+  const checkUser = () => {
+    let flag = false;
+    for(let i = 0; i < UserData.length; i++) {
+      if (UserData[i].id === id && UserData[i].pw === pw) {
+        flag = true;
+        break;
+      }
+    }
+
+    if (flag) {
+      setUser();
+      window.location.href = "/";
+    } else {
+      alert("잘못된 ID 혹은 PW입니다.");
+    }
+  }
+
+
   return (
     <Container style={ContainerStyle}>
       <Form>
@@ -50,7 +75,7 @@ const SignInForm = () => {
 
         <Row><Col>
         <SubContainer>
-          <Button variant="dark" type="submit" style={{marginBottom: "15px"}}>
+          <Button variant="dark" type="button" style={{marginBottom: "15px"}} onClick={() => checkUser()}>
               Sign In
           </Button>
           <Link to="/signup">Sing Up</Link>
